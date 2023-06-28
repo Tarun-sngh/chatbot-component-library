@@ -24,7 +24,17 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
+      resolve({
+        browser: true,
+        resolveOnly: [/^(?!stream|http|https|fs|zlib)/],
+        fallback: {
+          stream: require.resolve("stream-browserify"),
+          http: require.resolve("stream-http"),
+          https: require.resolve("https-browserify"),
+          fs: false,
+          zlib: require.resolve("browserify-zlib"),
+        },
+      }),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       json(),
@@ -36,7 +46,7 @@ export default [
   {
     input: "src/index.ts",
     output: [{ file: "dist/types.d.ts", format: "es" }],
-    plugins: [dts.default()],
+    plugins: [dts()],
     external: [/\.css$/],
   },
 ];
