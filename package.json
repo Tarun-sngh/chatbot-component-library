@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A simple template for a custom React component library",
   "scripts": {
-    "rollup": "rollup -c"
+    "rollup": "rollup -c --bundleConfigAsCjs"
   },
   "author": "tarun",
   "license": "MIT",
@@ -12,7 +12,8 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.1",
-    "@types/axios": "^0.14.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "@types/node": "^16.18.36",
     "@types/react": "^18.2.14",
     "axios": "^1.4.0",
