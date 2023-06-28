@@ -28,11 +28,11 @@ export default [
         browser: true,
         resolveOnly: [/^(?!stream|http|https|fs|zlib)/],
         fallback: {
-          stream: require.resolve("stream-browserify"),
-          http: require.resolve("stream-http"),
-          https: require.resolve("https-browserify"),
-          fs: false,
-          zlib: require.resolve("browserify-zlib"),
+          "stream": require.resolve("stream-browserify"),
+          "http": require.resolve("stream-http"),
+          "https": require.resolve("https-browserify"),
+          "fs": require.resolve("browserify-fs"),
+          "zlib": require.resolve("browserify-zlib")
         },
       }),
       commonjs(),
@@ -46,7 +46,7 @@ export default [
   {
     input: "src/index.ts",
     output: [{ file: "dist/types.d.ts", format: "es" }],
-    plugins: [dts()],
+    plugins: [dts.default()],
     external: [/\.css$/],
   },
 ];
